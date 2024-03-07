@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto+Condensed:wght@200&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lovelovelove</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="Mainprompt">
+            <img class="image" src="images/cute.gif"></img>
+            <div class="text">
+              <h1 class="hh" id="name">Ты безумно красивая и милая!😍❤️❤️</h1>
+              <p class="pp" id="question">Будем вместе до конца???🥺🥺🥺</p>
+            </div>
+            <div class="buttons">
+                <button class="button no" id="no-button" onclick="showMessage('No')">Нет!</button>
+                <button class="button yes"  onclick="showMessage('Yes')" id="yesButton">Даа!!</button>
+            </div>
+        </div>
+    </div>
+    <script>
+
+      const button = document.getElementById('no-button');
+
+      // Add event listener for mouseenter event
+      button.addEventListener('mouseenter', function() {
+          showMessage('No')
+      });
+
+      function showMessage(response) {
+  if (response === "No") {
+    const noButton = document.getElementById("no-button");
+    const container = document.querySelector(".container");
+    const maxWidth = window.innerWidth - noButton.offsetWidth;
+    const maxHeight = window.innerHeight - noButton.offsetHeight;
+
+    noButton.style.position = "absolute";
+
+    document.getElementsByClassName("image")[0].src = "images/gun.gif";
+
+    const randomX = Math.max(0, Math.floor(Math.random() * maxWidth));
+    const randomY = Math.max(0, Math.floor(Math.random() * maxHeight));
+
+    noButton.style.left = randomX + "px";
+    noButton.style.top = randomY + "px";
+
+    document.getElementById("question").textContent =
+      "Эйййй, ты чего задумала?";
+    document.getElementById("name").style.display = "none";
+
+  }
+
+  if (response === "Yes") {
+    document.getElementById("name").remove();
+    document.getElementById("no-button").remove();
+
+    const yesMessage = document.getElementById("question");
+    yesMessage.textContent = "Ты мое счастье и радость. Я ооочень счастлив с тобой! 😘❤️💋";
+    yesMessage.style.display = "block";
+    yesMessage.style.fontStyle = "normal";
+    document.getElementsByClassName("image")[0].src = "images/kiss.gif";
+
+    document.getElementById("yesButton").remove();
+  }
+}
+    </script>
+</body>
+
+</html>
